@@ -1,0 +1,16 @@
+<svg id="send-message" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="27.667" viewBox="0 0 30 27.667">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_2" data-name="Path 2" d="M.17,1.352A.962.962,0,0,1,1.482.137L23.287,8.752a.9.9,0,0,1,0,1.7l-21.831,8.6A.963.963,0,0,1,.141,17.843l3.112-6.762a1,1,0,0,1,.872-.561l9.909-.446A.539.539,0,1,0,14.042,9L4.09,8.428a1,1,0,0,1-.856-.554Z" transform="translate(-0.059 -0.06)" fill="#dc0d0d"/>
+    </clipPath>
+  </defs>
+  <rect id="Rectangle" width="30" height="27.667" fill="rgba(255,0,0,0)"/>
+  <g id="Group_7" data-name="Group 7" transform="translate(3.059 4.666)">
+    <path id="Path_2-2" data-name="Path 2" d="M.17,1.352A.962.962,0,0,1,1.482.137L23.287,8.752a.9.9,0,0,1,0,1.7l-21.831,8.6A.963.963,0,0,1,.141,17.843l3.112-6.762a1,1,0,0,1,.872-.561l9.909-.446A.539.539,0,1,0,14.042,9L4.09,8.428a1,1,0,0,1-.856-.554Z" transform="translate(-0.059 -0.06)" fill="#dc0d0d"/>
+    <g id="Mask_Group_7" data-name="Mask Group 7" clip-path="url(#clip-path)">
+      <g id="Colors_Primary" data-name="Colors/Primary" transform="translate(-3.059 -4.666)">
+        <path id="Rectangle_3" data-name="Rectangle 3" d="M0,0H30V27.667H0Z" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

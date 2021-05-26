@@ -1,0 +1,17 @@
+.active-plans h2,.plans h2{
+font-size: 22px;
+font-weight: 400;
+color: var(--headingcolor);
+}
+.plans{
+    margin-top: 1rem;
+}
+.plan-box-button {
+    background-color: var(--headingcolor) !important;
+    color: #fff;
+    font-weight: 600;
+}
+
+.plan-box-card .plan-box-button:hover{
+color: #fff  !important;
+}

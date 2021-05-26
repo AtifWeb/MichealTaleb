@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <title>Account settings</title>
+    <link href="ncss/style.css" rel="stylesheet" />
+    <link href="ncss/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./nfont-awesome/css/all.css" />
+    <script src="./nfont-awesome/js/all.js"></script>
+
+
+    <!-- Chart Lib -->
+    <script src="./libs/chart-js/chart.js"></script>
+  </head>
+  <body>
+    <header class="bgtheme p23_25">
+      <p class="alignleft">
+        <a href="#"><img src="nimg/side-arrow.png" /></a>
+      </p>
+      <p class="aligncenter font5 fontfamilyub fwreg colorwhite">
+        Reset Password
+      </p>
+      <p class="alignright"></p>
+      <div style="clear: both"></div>
+    </header>
+    <main>
+      <div class="page13_d1">
+       <div class="usage-details">
+        <div  class="usage-details-image-wrapper">
+            <img src="./nimg/usage_details.PNG" alt="">
+        </div>
+        <div class="alerts alerts-info">
+          <img src="./nimg/download.png" alt="" style="width: 30px;margin-bottom: 4px;">
+            <!-- <i class="fas fa-file-download font7 headingcolor"></i> -->
+            <span>Received Files are not deducted from
+                usage quota</span>
+        </div>
+
+        <div class="usage-charts-area">
+            <div class="usage-chart-wrapper">
+                <div class="presentation-chart">
+                    <span>
+                        96.8MIB
+                    </span>
+                    <span>Availble</span>
+                    
+                </div>
+                
+                  <canvas id="usage-chart" width="100" height="100"></canvas>
+                
+            </div>
+            <div class="usage-presentation">
+                <h4>Usage & Details</h4>
+               <div class="usage-presentation-bottom">
+                <div class="planning-wrapper">
+                    <span class="heading">
+                        Plan
+                    </span>
+                    <span class="value">
+                        Free
+                    </span>
+                </div>
+                <div class="quota-wrapper">
+                    <span class="heading">
+                        Quota
+                    </span>
+                    <span class="value">
+                        100 MIB
+                    </span>
+                </div>
+               </div>
+            </div>
+        </div>
+        <div class="usage-table">
+            <div class="usage-table-head">
+               <div class="row">
+                <h3>Types</h3>
+                <h3>Last 24HR</h3>
+                <h3>To Date</h3>
+               </div>
+            </div>
+            <div class="usage-table-body">
+                <div class="row">
+                    <div class="col-1">
+                        <img src="./nimg/save.png" alt="">
+                        <span>Sent</span>
+                    </div>
+                    <span class="col-2">
+                        0 B 
+                    </span>
+                    <span class="col-3">
+                        89.5 KIB
+                    </span>
+                </div>
+
+                <div class="row">
+                    <div class="col-1">
+                        <img src="./nimg/fetch.png" alt="">
+                        <span>Fetched</span>
+                    </div>
+                    <span class="col-2">
+                        0 B 
+                    </span>
+                    <span class="col-3">
+                    1.5 KIB
+                    </span>
+                </div>
+
+                <div class="row">
+                    <div class="col-1">
+                        <img src="./nimg/share.png" alt="">
+                        <span>Shared
+                        </span>
+                    </div>
+                    <span class="col-2">
+                        0 B 
+                    </span>
+                    <span class="col-3">
+                        32.0 KIB
+                    </span>
+                </div>
+
+                <div class="row">
+                    <div class="col-1">
+                        <img src="./nimg/recieve.png" alt="">
+                        <span>Received</span>
+                    </div>
+                    <span class="col-2">
+                        0 B 
+                    </span>
+                    <span class="col-3">
+                        3.2 MIB
+                    </span>
+                </div>
+            </div>
+        </div>
+       </div>
+      </div>
+    </main>
+    <section>
+      <div class="stickyhead">
+        <div class="bottomnav">
+          <div class="bottom_nav_flex bnwidth">
+            <div class="textcenter">
+              <a href="#">
+                <i class="fa fa-home coloricon font9 "></i>
+                <p class="font5 fontfamilyub coloricon">Home</p>
+              </a>
+            </div>
+            <div class="textcenter">
+              <a href="#">
+                <i class="fa fa-key coloricon font9"></i>
+                <p class="textcenter font5 fontfamilyub coloricon">Reset</p>
+              </a>
+            </div>
+            <div class="textcenter">
+              <a href="#">
+                <i class="fa fa-plug coloricon font9"></i>
+                <p class="textcenter font5 fontfamilyub coloricon">Activate</p>
+              </a>
+            </div>
+            <div class="textcenter">
+              <a href="#">
+                <i class="fa fa-th-large coloricon font9"></i>
+                <p class="textcenter font5 fontfamilyub coloricon">Assist</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./charts/doughnut-charts.js"></script>
+    <script src="njs/bootstrap.js"></script>
+    <script src="njs/bootstrap.min.js"></script>
+    <script src="njs/jquery.js"></script>
+  </body>
+</html>

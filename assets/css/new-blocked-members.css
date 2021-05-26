@@ -1,0 +1,72 @@
+.blocked-members-list,
+.members-list {
+  list-style: none;
+  padding-left: 0px;
+}
+.blocked-members-list li,
+.members-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #bebec0;
+  padding: 1rem 0rem;
+}
+.blocked-members-list li .blocked-members-list-presentation,
+.members-list li .members-list-presentation {
+  display: flex;
+  align-items: flex-start;
+}
+.blocked-members-list li .blocked-members-list-presentation img,
+.members-list li .members-list-presentation img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.blocked-members-list li .blocked-members-list-presentation .name-presentation,
+.members-list li .members-list-presentation .name-presentation {
+  margin-left: 10px;
+  word-break: break-all;
+}
+
+.blocked-members-list-presentation .name-presentation .name,
+.members-list-presentation .name-presentation .name {
+  font-size: 16px;
+  color: var(--headingcolor);
+  font-weight: 500;
+}
+
+.blocked-members-list-presentation .name-presentation .email,
+.members-list-presentation .name-presentation .email {
+  font-size: 11px;
+  color: var(--textcolor2);
+  font-weight: 500;
+}
+
+.blocked-members-list li .unblock-link-button,
+.members-list li .option-buttons a {
+  color: #000;
+  background-color: #dcdde1;
+  padding: 0.3rem 0.6rem;
+  font-size: 13px;
+  border-radius: 3px;
+}
+.members-list li .option-buttons {
+  display: flex;
+  margin-top: 5px;
+}
+.members-list li .option-buttons a {
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.3rem 0.4rem;
+}
+.members-list li .option-buttons .to-computer-link-button {
+  background-color: #e8e8f7;
+  margin-right: 5px;
+  color: var(--headingcolor);
+}
+.members-list li .option-buttons .to-device-link-button {
+  background-color: #e0eee8;
+  color: #28a745;
+}
