@@ -1,8 +1,23 @@
 .send_msg {
-  z-index: 333;
+  width: 375px !important;
+}
+.send_msg form {
+  display: flex;
+  align-items: center;
+}
+.send_msg form > * + * {
+  margin-left: 1rem;
 }
 
-input[type="submit"] {
+.send_msg form input {
+  margin-bottom: 0px !important;
+  width: 100% !important;
+  flex: 1 !important;
+}
+.send_msg .submit-input {
+  display: none;
+}
+#messages-files {
   display: none;
 }
 .confirm-messages {
@@ -79,10 +94,10 @@ input[type="submit"] {
   padding-right: 0px;
 }
 @media screen and (max-width: 380px) {
-  .send_msg_grp input {
-    width: 270px !important;
-  }
   .messages {
     padding: 0rem 1rem;
+  }
+  .send_msg {
+    width: 100% !important;
   }
 }
