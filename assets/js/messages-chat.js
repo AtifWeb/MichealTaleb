@@ -40,9 +40,10 @@ const ControlCloseIcon = (e) => {
   MessageContainer.style.display = "none";
   FilesContainer.textContent = "";
   let FILEHTML = `<input type="file" name="" id="messages-files" multiple>`;
-  let SENDFILEAREA = document.querySelector(".send_msg_grp");
+  let SENDFILEAREA = document.querySelector(".send_msg");
+  console.log(SENDFILEAREA);
   SENDFILEAREA.insertAdjacentHTML("beforeend", FILEHTML);
-
+  AllFiles = [];
   // Again Add EventListener
   document
     .querySelector("#messages-files")
@@ -50,34 +51,38 @@ const ControlCloseIcon = (e) => {
 };
 const ControlSubmitFiles = (e) => {
   e.preventDefault();
-  let MessageContainer = document.querySelector(".confirm-messages");
-  let FilesContainer = document.querySelector(".Files-container");
-  let Messages = document.querySelector(".messages");
+  console.log(AllFiles.length);
   console.log(AllFiles);
-  MessageContainer.style.display = "none";
-  FilesContainer.textContent = "";
+  if (AllFiles.length > 0) {
+    let MessageContainer = document.querySelector(".confirm-messages");
+    let FilesContainer = document.querySelector(".Files-container");
+    let Messages = document.querySelector(".messages");
 
-  for (let i = 0; i < AllFiles.length; i++) {
-    // This thing convert image into string because we want to use in image src
-    let reader = new FileReader();
-    reader.readAsDataURL(AllFiles[i]);
+    MessageContainer.style.display = "none";
+    FilesContainer.textContent = "";
 
-    // When convert then this event fire
-    reader.addEventListener("load", () => {
-      let HTML = HTMLBOILTERPLATE(
-        AllFiles[i].name,
-        reader.result,
-        AllFiles[i].type,
-        AllFiles[i].size
-      );
+    for (let i = 0; i < AllFiles.length; i++) {
+      // This thing convert image into string because we want to use in image src
+      let reader = new FileReader();
+      reader.readAsDataURL(AllFiles[i]);
 
-      Messages.insertAdjacentHTML("beforeend", HTML);
+      // When convert then this event fire
+      reader.addEventListener("load", () => {
+        let HTML = HTMLBOILTERPLATE(
+          AllFiles[i].name,
+          reader.result,
+          AllFiles[i].type,
+          AllFiles[i].size
+        );
 
-      window.scrollTo(
-        window.pageYOffset,
-        document.querySelector("body").offsetHeight + 100
-      );
-    });
+        Messages.insertAdjacentHTML("beforeend", HTML);
+
+        window.scrollTo(
+          window.pageYOffset,
+          document.querySelector("body").offsetHeight + 100
+        );
+      });
+    }
   }
 };
 const HTMLBOILTERPLATEFORSHOW = (

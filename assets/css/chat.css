@@ -1,5 +1,6 @@
 .send_msg {
   width: 375px !important;
+  z-index: 33;
 }
 .send_msg form {
   display: flex;
@@ -27,7 +28,7 @@
   position: fixed;
   top: 0;
   left: 50%;
-  z-index: 222;
+  z-index: 22;
   display: none;
   padding: 1rem 2rem;
   overflow: auto;
