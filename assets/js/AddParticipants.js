@@ -158,3 +158,65 @@ const HandleForwardSlide = (e) => {
 
 ForwardArrow.addEventListener("click", HandleBackwardSlide);
 BackArrow.addEventListener("click", HandleForwardSlide);
+
+setInterval(() => {
+  ParticiPantsCollection.forEach((EachParticipant) => {
+    EachParticipant.removeEventListener("click", HandleParticipantSelection);
+  });
+  ParticiPantsCollection = document.querySelectorAll(".participant label");
+  let ParticiPantsCheckbox = document.querySelectorAll(".participant input");
+
+  ParticiPantsCheckbox.forEach((EachCheckbox) => {
+    let CheckboxId = EachCheckbox.id;
+    let CheckboxSplitId = EachCheckbox.id.split("-")[2];
+
+    let ReelParticipant = document.querySelectorAll(
+      ".participants-reel .participant"
+    );
+    ReelParticipant.forEach((EachReelParticipant) => {
+      let EachReelParticipantId = EachReelParticipant.id;
+      let EachReelParticipantIdSplit = EachReelParticipantId.split("-")[2];
+
+      if (EachReelParticipantIdSplit == CheckboxSplitId) {
+        let RelatedCheckbox = document.querySelector(`#${CheckboxId}`);
+        let RelatedCheckboxLabel = document.querySelector(
+          `#${CheckboxId} + label`
+        );
+        let RelatedCheckboxLabelCustomCheckBox = document.querySelector(
+          `#${CheckboxId} + label > .custom-checkbox`
+        );
+
+        if (!RelatedCheckbox.checked) {
+          RelatedCheckbox.checked = true;
+          RelatedCheckboxLabel.classList.add("active-label");
+          RelatedCheckboxLabelCustomCheckBox.classList.add("active-checkbox");
+        }
+      }
+    });
+  });
+
+  ParticiPantsCollection.forEach((EachParticipant) => {
+    EachParticipant.addEventListener("click", HandleParticipantSelection);
+  });
+}, 500);
+
+// document.querySelector(".try-check").addEventListener("click", () => {
+//   let NewCollection = Query(".participants-collection");
+//   let html = ` <div class="participant" id="participants-collection-participantAtifAsim123">
+//   <input type="checkbox" value="AtifAsim123"id="participant-checkbox-AtifAsim123"  >
+//   <label for="participant-checkbox-AtifAsim123" id="participants-collection-label-AtifAsim123">
+//       <div class="participant-image">
+//           <img src="./nimg/user.svg" alt="">
+//       </div>
+//       <p>Atif Asim</p>
+//       <div class="custom-checkbox">
+//          <i class="fas fa-check tick-icon"  ></i>
+//       </div>
+//   </label>
+// </div>
+// `;
+//   NewCollection.innerHTML = html;
+//   NewCollection.insertAdjacentHTML("beforeend", html);
+
+//   // HTMLTEMPLATE();
+// });

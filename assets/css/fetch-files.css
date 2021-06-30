@@ -146,6 +146,13 @@
 .download-message {
   display: none;
   text-align: center;
+  background-color: #e9f6ec;
+  padding: 0.25rem 0rem;
+  margin-right: 10px;
+}
+
+.download-message > img {
+  width: 30px;
 }
 .result-box-buttons a.d-none + small {
   display: block;
