@@ -1,0 +1,106 @@
+ul,
+nav {
+  list-style: none;
+}
+
+.member-details-container,
+.top-detail-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.top-detail-area .rounded-name-area {
+  width: 83px;
+  height: 83px;
+  border-radius: 50%;
+  background-color: #e8e8f7;
+  color: #7a69d4;
+
+  margin-top: 1rem;
+}
+.top-detail-area > h1 {
+  color: #070707;
+  font-size: 30px;
+  margin-top: 15px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.top-detail-area > .email-info {
+  color: #6e6e70;
+  font-weight: 600;
+
+  font-size: 17.5px;
+}
+
+.box-area {
+  width: 100%;
+  margin: 1.5rem 0rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+.box-area .box {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.7rem 0.3rem;
+  border-radius: 5px;
+}
+.box-area .box p {
+  margin-top: 7px;
+  font-size: 12px;
+  color: #7a69d4;
+}
+.sent-file-info {
+  width: 100%;
+  background-color: #fff;
+  padding: 0.7rem 1.3rem;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  color: #454545;
+}
+.sent-file-info .date {
+  font-size: 15px;
+  font-weight: 500;
+}
+.sent-file-info .sent-info {
+  font-size: 12px;
+  margin-top: 7px;
+}
+
+.contact-box {
+  width: 100%;
+  background-color: #fff;
+  padding: 0rem 1.3rem;
+  border-radius: 5px;
+}
+.contact-box li {
+  padding: 0.5rem 0rem;
+  border-bottom: 1px solid #edeef3;
+}
+.contact-box li label {
+  font-size: 16px;
+  color: #7a69d4;
+  display: block;
+  cursor: pointer;
+  width: 100%;
+}
+.option-box {
+  width: 100%;
+  padding: 0.5rem 1.3rem;
+  background-color: #fff;
+  box-shadow: 2px 10px 10px #edeef2;
+  font-size: 16px;
+  color: #7a69d4;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.option-box.danger {
+  color: #dc5868;
+}
+.option-box + .option-box {
+  margin-top: 1rem;
+}

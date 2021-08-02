@@ -69,10 +69,9 @@
   align-self: center;
 }
 .messages > div {
-  background-color: #7a69d4;
   position: relative;
-
-  padding: 0.6rem 1rem;
+  background-color: #fff;
+  padding: 4px 10px 3px 10px;
   max-width: 80%;
 
   border-radius: 10px;
@@ -82,44 +81,51 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 5px;
+  margin-top: 2px;
+  width: 100%;
 }
 .messages > div .bottom-area a {
   color: #fbd142;
-  font-size: 14px;
-  margin-right: 10px;
+  font-size: 12px;
+  margin-right: 20px;
 }
 
 .messages > div .bottom-area p {
-  font-size: 14px;
+  font-size: 12px;
 }
 .messages > div:after {
   content: "";
-  background: url("../../nimg/message-left.png");
-  background-size: contain;
   position: absolute;
-  width: 20px;
-  height: 20px;
+  border: 9px solid transparent;
+  border-right: 17px solid var(--white);
+  border-left: none;
+  bottom: 4px;
   left: -14px;
-  z-index: -2;
-  bottom: 5px;
+  border-radius: 0px 0px 0px 0px;
 }
 .messages > div.my-text:after {
   left: 98% !important;
   transform: rotate(180deg);
 }
 .messages > div p {
-  color: #fff !important;
+  color: #7a69d4;
 }
 .messages > .my-text {
   align-self: flex-end;
+  background-color: #7a69d4;
+}
+.messages > div.my-text:after {
+  border-right: 17px solid #7a69d4;
+}
+.messages > .my-text p {
+  color: #fff;
 }
 .image-container,
 .video-container {
   padding: 0.5rem !important;
   border-radius: 10px;
   background-color: #7a69d4;
-  min-height: 200px;
+  max-width: 60%;
   cursor: pointer;
 }
 .image-container img,

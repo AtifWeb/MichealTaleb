@@ -16,6 +16,7 @@
   flex: 1;
   margin-left: 10px !important;
   font-size: 13px;
+  outline: none !important;
 }
 .participant-reel-container {
   overflow: hidden;
