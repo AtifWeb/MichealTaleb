@@ -106,18 +106,18 @@
   font-weight: 600;
 }
 .plan-box-info {
-     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex: 1;
 }
 .plan-box-card .card-top .plan-box-info > .plan-info-right {
   background-color: #fbedef;
   color: #dc5868;
   display: inline-block;
   padding: 0.1rem 1rem;
-  margin-top:10px;
+  margin-top: 10px;
   font-size: 14px;
   font-weight: 400;
   text-align: center;
@@ -130,9 +130,10 @@
 }
 .result-box-buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   margin-top: 1.5rem;
+  grid-gap: 10px;
 }
 
 .result-box-buttons > * {
@@ -175,12 +176,17 @@
 .result-box-buttons .Remove-button {
   background-color: #fbedef;
   color: #dc5868;
-  margin-right: 10px;
 }
 .result-box-buttons .Download-button {
   background-color: #e9f6ec;
   color: #28a745;
-  margin-right: 10px;
+}
+.result-box-buttons .view-button {
+  background-color: #b3b3b3;
+  color: #ffffff;
+}
+.result-box-buttons .view-button:hover {
+  color: #fff !important;
 }
 .results-container > .main-heading {
   font-size: 20px;

@@ -1,17 +1,16 @@
 import {AudioPlayer} from './CustomAudioPlayer.js'
 
+let Track=new Audio();
 
 
 
-// AudioPlayer
-AudioPlayer()
 
 
 
 
 
 let ClosePopupIcon=document.querySelector(".view-popup .close-icon");
-let FileIconWrappers=document.querySelectorAll(".plan-box-card .image-wrapper")
+let FileIconWrappers=document.querySelectorAll(".plan-box-card .view-button")
 let ViewPopUp=document.querySelector(".view-popup")
 ClosePopupIcon.addEventListener('click',(e)=>{
     document.querySelector(".view-popup").style.display="none"
@@ -19,8 +18,9 @@ ClosePopupIcon.addEventListener('click',(e)=>{
 
 FileIconWrappers.forEach(FileIconWrapper=>{
 FileIconWrapper.addEventListener("click",(e)=>{
+    e.preventDefault()
 
-    let DownloadButton=e.target.parentNode.parentNode.querySelector(".Download-button")   
+    let DownloadButton=e.target.parentNode.querySelector(".Download-button")   
     let FileLink=""
     if(DownloadButton!=null){
         FileLink=DownloadButton.getAttribute("href")
@@ -32,12 +32,20 @@ FileIconWrapper.addEventListener("click",(e)=>{
             <img src=${FileLink} alt="">
             `
             ViewPopUp.querySelector(".video-area").style.display="none"
+            ViewPopUp.querySelector(".audio-area").style.display="none"
             ViewPopUp.querySelector(".content-area").innerHTML=HTML
         }else if (FileExtension=="mp4"){
             ViewPopUp.querySelector(".content-area").innerHTML=""
             ViewPopUp.querySelector(".video-area").style.display="block"
+            ViewPopUp.querySelector(".audio-area").style.display="none"
           document.querySelector("#my-video_html5_api").setAttribute("src",FileLink)
           document.querySelector("#my-video_html5_api #Atif").setAttribute("src",FileLink)
+        }else if(FileExtension=="mp3"){
+            ViewPopUp.querySelector(".content-area").innerHTML=""
+            ViewPopUp.querySelector(".video-area").style.display="none"
+            ViewPopUp.querySelector(".audio-area").style.display="flex"
+             // AudioPlayer
+            AudioPlayer(FileLink,Track)
         }
         
         

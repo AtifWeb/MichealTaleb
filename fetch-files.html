@@ -17,7 +17,7 @@
     <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="./nfont-awesome/css/all.css" />
-    <script src="./assets/js/ViewPopUp.js" defer type="module"></script>
+  
 <style>
   .view-popup{
     height: 100vh;
@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* display: none; */
+    display: none;
   }
   .view-popup img{
     max-width: 50vw;
@@ -97,6 +97,7 @@ border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  display:none;
 
 }
 .playing-area{
@@ -259,6 +260,9 @@ justify-content: center;
             
             <label for="share-radio" class=" Share-button result-box-button">Share</label>
            </form>
+           <a href="#" class="result-box-button view-button" >
+            View
+        </a >
            </div>
         </div>
 
@@ -293,7 +297,9 @@ justify-content: center;
           <input type="radio" id="share-radio" style="display: none;">
           
           <label for="share-radio" class=" Share-button result-box-button">Share</label>
-         </form>
+         </form>  <a href="#" class="result-box-button view-button" >
+          View
+      </a >
          </div>
       </div>
 
@@ -328,10 +334,83 @@ justify-content: center;
         <input type="radio" id="share-radio" style="display: none;">
         
         <label for="share-radio" class=" Share-button result-box-button">Share</label>
-       </form>
+       </form>  <a href="#" class="result-box-button view-button" >
+        View
+    </a >
        </div>
     </div>
+    <div class="plan-box-card">
+      <div class="card-top">
+          <div class="image-wrapper">
+              <img src="./nimg/result-found.PNG" alt="" style="pointer-events: none;">
+          </div>
+      <div class="plan-box-info">
+          <div class="plan-info-left">
+              <h3>Audio.mp4
 
+              </h3>
+              <span>504 KIB</span>
+             </div>
+             <span class="plan-info-right">
+              28 Mins
+             </span>
+      </div>
+      </div>
+     <div class="result-box-buttons">
+      <a href="./assets/demi.mp3" class="result-box-button Download-button" onclick="doMagic(event,5)">
+          Download
+      </a >
+        <small class="download-message">
+          <img src="./nimg/download.png" alt="">
+        </small>
+      <a href="#" class="result-box-button Remove-button" >
+          Remove
+      </a >
+     <form class="share-button-wrapper">
+      <input type="radio" id="share-radio" style="display: none;">
+      
+      <label for="share-radio" class=" Share-button result-box-button">Share</label>
+     </form>  <a href="#" class="result-box-button view-button" >
+      View
+  </a >
+     </div>
+  </div>
+  <div class="plan-box-card">
+    <div class="card-top">
+        <div class="image-wrapper">
+            <img src="./nimg/result-found.PNG" alt="" style="pointer-events: none;">
+        </div>
+    <div class="plan-box-info">
+        <div class="plan-info-left">
+            <h3>Audio.mp4
+
+            </h3>
+            <span>504 KIB</span>
+           </div>
+           <span class="plan-info-right">
+            28 Mins
+           </span>
+    </div>
+    </div>
+   <div class="result-box-buttons">
+    <a href="./assets/demi2.mp3" class="result-box-button Download-button" onclick="doMagic(event,5)">
+        Download
+    </a >
+      <small class="download-message">
+        <img src="./nimg/download.png" alt="">
+      </small>
+    <a href="#" class="result-box-button Remove-button" >
+        Remove
+    </a >
+   <form class="share-button-wrapper">
+    <input type="radio" id="share-radio" style="display: none;">
+    
+    <label for="share-radio" class=" Share-button result-box-button">Share</label>
+   </form>  <a href="#" class="result-box-button view-button" >
+    View
+</a >
+   </div>
+</div>
 
 
        </div>
@@ -375,7 +454,7 @@ justify-content: center;
     </section>
 
     
-  
+    <script src="./assets/js/ViewPopUp.js" defer type="module"></script>
     <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
     <script src="./assets/js/newFetchFile.js"></script>
     <script src="njs/bootstrap.js"></script>
