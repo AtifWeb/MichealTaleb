@@ -1390,3 +1390,49 @@ input:checked ~ .tab-content2 {
   flex: 0.5;
   text-align: center;
 }
+@media screen and (max-width: 430px) {
+  #msgcollection {
+    padding: 0rem 1rem !important;
+  }
+  .page13_d1,
+  .pageuserhomeshort,
+  .allmsgspage,
+  .pagehistorpanel,
+  .devicehistory,
+  .page5_d1,
+  .page8_d1,
+  .page12_d1 {
+    width: 100% !important;
+  }
+  input[type="text"] {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 380px) {
+  .sider_menu + .disflex > a,
+  .pagehistorpanel > .disflex > a {
+    width: 100% !important;
+    display: block !important;
+    margin-right: 0px !important;
+  }
+}
+.button-wrapper-clear-search {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1rem;
+  grid-gap: 1rem;
+}
+.button-wrapper-clear-search a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--headingcolor);
+  color: #fff;
+  height: 43px;
+  border-radius: 8px;
+}
+.button-wrapper-clear-search a:hover {
+  color: #fff;
+}

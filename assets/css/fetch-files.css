@@ -106,17 +106,18 @@
   font-weight: 600;
 }
 .plan-box-info {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  flex: 1;
+     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex: 1;
 }
 .plan-box-card .card-top .plan-box-info > .plan-info-right {
   background-color: #fbedef;
   color: #dc5868;
   display: inline-block;
   padding: 0.1rem 1rem;
-  margin-left: 5px;
+  margin-top:10px;
   font-size: 14px;
   font-weight: 400;
   text-align: center;

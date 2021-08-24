@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-
+    <!-- <link rel="stylesheet" href="./assets/demi.m4a"> -->
     <title>Account settings</title>
     <link href="ncss/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/fetch-files.css">
@@ -13,10 +13,173 @@
     <link href="ncss/bootstrap.css" rel="stylesheet" type="text/css" />
     <script src="./nfont-awesome/js/all.js"></script>
 
-    <link rel="stylesheet" href="./nfont-awesome/css/all.css" />
+    <!-- vidoe js -->
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
 
+    <link rel="stylesheet" href="./nfont-awesome/css/all.css" />
+    <script src="./assets/js/ViewPopUp.js" defer type="module"></script>
+<style>
+  .view-popup{
+    height: 100vh;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 222222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* display: none; */
+  }
+  .view-popup img{
+    max-width: 50vw;
+    max-height: 90vh;
+    object-fit: cover;
+  }
+  .view-popup .video-js{
+    /* height: 60vh;
+    width: 50vw; */
+  }
+  .close-icon{
+    position: absolute;
+    top:20px;
+    right: 30px;
+
+}
+.video-area{
+  display: none;
+}
+
+.close-icon .fa-times path{
+  fill: #fff;
+}
+.plan-box-card  .image-wrapper  > *{
+  pointer-events: none;
+}
+.video-area .vjs-big-play-button{
+left: 50%;
+top: 50%;
+transform: translate(-50%,-50%);
+background-color: #7A69D4;
+border: none;
+}
+@media screen and (max-width:700px){
+  .video-area{
+   padding: 0rem 2rem;
+   width: 90%;
+  }
+  .video-area #my-video{
+    width: 100%;
+    
+  }
+}
+@media screen and (max-width:550px){
+  .video-area #my-video{
+    width: 100%;
+ height: 250px;   
+  }  .view-popup img{
+    max-width: 70vw;
+    max-height: 90vh;
+    
+  }
+}
+@media screen and (max-width:430px){
+  .video-area{
+    height: 200px;
+   width: 95%;
+  }
+}
+.audio-range{
+  background-color: #7A69D4;
+  width: 100%;
+  margin: 0 !important;
+}
+ .audio-area{
+  width: 400px;  background-color: #7A69D4;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.playing-area{
+  width: 100%;
+}
+.audio-area > .icon-wrapper{
+background-color: #fff;
+color: #7A69D4;
+width: 200px;
+height:200px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.audio-area > .icon-wrapper svg{
+  width: 80px !important;
+    height: 80px !important;
+}
+.audio-area .buttons-wrapper{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.audio-area .buttons-wrapper .icon-wrapper{
+  color: #7A69D4;
+  background-color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+</style>
   </head>
   <body>
+
+    <div class="view-popup">
+      <div class="close-icon">
+        <i class="fas fa-times"></i>
+      </div>
+   <div class="content-area">
+  
+   </div>
+   <div class="video-area">
+    <video
+    id="my-video"
+    class="video-js"
+    controls
+ 
+
+    poster="MY_VIDEO_POSTER.jpg"
+    data-setup="{}"
+  >
+  <source  id="Atif"  src="./assets/video.mp4" type="video/mp4" />
+</video>
+   </div>
+
+   <div class="audio-area">
+     <div class="icon-wrapper">
+      <i class="fas fa-headphones-alt"></i>
+     </div>
+     <div class="playing-area">
+       <input type="range" name="" id="" min="0" max="100" value="0" class="audio-range">
+       <div class="buttons-wrapper">
+        <!-- <i class="fas fa-pause"></i> -->
+      
+         <div class="icon-wrapper PlayButton">
+          <i class="fas fa-play"></i>
+         </div>
+      
+       </div>
+     </div>
+   </div>
+    </div>
     <header class="bgtheme p23_25">
       <p class="alignleft">
         
@@ -66,11 +229,11 @@
         <div class="plan-box-card">
             <div class="card-top">
                 <div class="image-wrapper">
-                    <img src="./nimg/result-found.PNG" alt="">
+                    <img src="./nimg/result-found.PNG" alt="" style="pointer-events: none;">
                 </div>
             <div class="plan-box-info">
                 <div class="plan-info-left">
-                    <h3>LOGO.jpeg
+                    <h3>image 1.jpeg
 
                     </h3>
                     <span>504 KIB</span>
@@ -81,7 +244,7 @@
             </div>
             </div>
            <div class="result-box-buttons">
-            <a href="#" class="result-box-button Download-button" onclick="doMagic(event,5)">
+            <a href="https://cdn.pixabay.com/photo/2021/05/22/10/11/fishing-boat-6273132_960_720.jpg" class="result-box-button Download-button" onclick="doMagic(event,5)">
                 Download
             </a >
               <small class="download-message">
@@ -97,6 +260,79 @@
            </form>
            </div>
         </div>
+
+        <div class="plan-box-card">
+          <div class="card-top">
+              <div class="image-wrapper">
+                  <img src="./nimg/result-found.PNG" alt="" style="pointer-events: none;">
+              </div>
+          <div class="plan-box-info">
+              <div class="plan-info-left">
+                  <h3>image 2.jpeg
+
+                  </h3>
+                  <span>504 KIB</span>
+                 </div>
+                 <span class="plan-info-right">
+                  28 Mins
+                 </span>
+          </div>
+          </div>
+         <div class="result-box-buttons">
+          <a href="https://cdn.pixabay.com/photo/2021/08/18/22/42/australian-shepherd-6556697__340.jpg" class="result-box-button Download-button" onclick="doMagic(event,5)">
+              Download
+          </a >
+            <small class="download-message">
+              <img src="./nimg/download.png" alt="">
+            </small>
+          <a href="#" class="result-box-button Remove-button" >
+              Remove
+          </a >
+         <form class="share-button-wrapper">
+          <input type="radio" id="share-radio" style="display: none;">
+          
+          <label for="share-radio" class=" Share-button result-box-button">Share</label>
+         </form>
+         </div>
+      </div>
+
+      <div class="plan-box-card">
+        <div class="card-top">
+            <div class="image-wrapper">
+                <img src="./nimg/result-found.PNG" alt="" style="pointer-events: none;">
+            </div>
+        <div class="plan-box-info">
+            <div class="plan-info-left">
+                <h3>Vidoe.mp4
+
+                </h3>
+                <span>504 KIB</span>
+               </div>
+               <span class="plan-info-right">
+                28 Mins
+               </span>
+        </div>
+        </div>
+       <div class="result-box-buttons">
+        <a href="./assets/demi.mp4" class="result-box-button Download-button" onclick="doMagic(event,5)">
+            Download
+        </a >
+          <small class="download-message">
+            <img src="./nimg/download.png" alt="">
+          </small>
+        <a href="#" class="result-box-button Remove-button" >
+            Remove
+        </a >
+       <form class="share-button-wrapper">
+        <input type="radio" id="share-radio" style="display: none;">
+        
+        <label for="share-radio" class=" Share-button result-box-button">Share</label>
+       </form>
+       </div>
+    </div>
+
+
+
        </div>
 
 
@@ -136,6 +372,10 @@
         </div>
       </div>
     </section>
+
+    
+  
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
     <script src="./assets/js/newFetchFile.js"></script>
     <script src="njs/bootstrap.js"></script>
     <script src="njs/bootstrap.min.js"></script>

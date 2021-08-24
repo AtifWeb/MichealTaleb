@@ -70,3 +70,10 @@
   background-color: #e0eee8;
   color: #28a745;
 }
+@media screen and (max-width: 450px) {
+  .members-list li .option-buttons a {
+    font-size: 14px !important;
+
+    padding: 0.3rem 0.8rem;
+  }
+}

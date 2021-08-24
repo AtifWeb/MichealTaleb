@@ -12,7 +12,7 @@ let MessageInput = document.querySelector(".type-message-input");
 function MessageChat(e) {
   // Grabing All Files
   File = e.target.files;
-
+console.log( e.target.files)
   // Storing into AllFiles you can check line #02
   AllFiles = File;
 
@@ -20,7 +20,13 @@ function MessageChat(e) {
   let MessageContainer = document.querySelector(".confirm-messages");
   // This is the container of all files which will show in confirm mode files
   let FilesContainer = document.querySelector(".Files-container");
-
+  let tc= {name: "usersvg.svg", lastModified: 1629225658777, lastModifiedDate: "Tue Aug 17 2021 11:40:58 GMT-0700 (Pacific Daylight Time)", webkitRelativePath: "", size: 709}
+  
+//   let dt = new FileReader();
+//   dt.readAsDataURL(tc);
+//   dt.addEventListener("load", () => {
+// console.log(dt)
+//   })
   // We want to clean content inside files container
   FilesContainer.textContent = "";
 
