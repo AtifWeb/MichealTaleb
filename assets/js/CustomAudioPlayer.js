@@ -55,16 +55,36 @@ const PauseAudio=()=>{
         console.log(AudioButton)
         if(isPlay==true){
             PlayAudio()
-           
+
+          
+                HandleCurrentState()
+         
         }else{
           
             PauseAudio()
+           
+                
+          
+            
         }
 
     }
 
 
-
+const HandleCurrentState=()=>{
+    setInterval(() => {
+    console.log(Track.played.length)
+    if(Track.played.length==0){
+        document.querySelector(".audio-area > .icon-wrapper").innerHTML=`<i class="fas fa-spinner"></i>   `
+        
+        document.querySelector(".audio-area > .icon-wrapper").classList.add("rotate")
+    }else{
+        document.querySelector(".audio-area > .icon-wrapper").innerHTML=`  <i class="fas fa-headphones-alt"></i>`
+        
+        // document.querySelector(".audio-area > .icon-wrapper").classList.remove("rotate")
+    }
+   
+},1000)}
 
     AudioButton.addEventListener("click",HandlePlayButton)
     ClosePopupIcon.addEventListener("click",HandleDestroyObject)

@@ -111,7 +111,13 @@ height:200px;
 border-radius: 50%;
 display: flex;
 align-items: center;
-justify-content: center;
+/* display: none; */
+justify-content: center;  
+
+
+}
+.audio-area > .icon-wrapper.rotate{
+  animation: 1.5s Rotate infinite linear;
 }
 .audio-area > .icon-wrapper svg{
   width: 80px !important;
@@ -137,6 +143,15 @@ justify-content: center;
 @media screen and (max-width:430px){
   .audio-area{
     width: 80%;
+  }
+}
+
+@keyframes Rotate{
+  from{
+   transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
   }
 }
 
