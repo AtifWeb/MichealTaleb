@@ -19,7 +19,9 @@
 
 setInterval(()=>{
     console.log(Audio.networkState)
-    document.querySelector(".net").textContent=Audio.networkState
+    console.log(Audio.played.length)
+    // document.querySelector(".net").textContent=Audio.networkState
+    document.querySelector(".net").textContent=Audio.played.length
 },1000)
 
 
