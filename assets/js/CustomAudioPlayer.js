@@ -1,10 +1,12 @@
 export const AudioPlayer=(FileLink,Track)=>{
+    
     let AudioButton=document.querySelector(".PlayButton");
     let AudioRange=document.querySelector(".audio-range");
     let isPlay=true
+    let isPlayed=false;
   
     Track.src=FileLink
-    
+    let PlayInterval=""
 
     let ClosePopupIcon=document.querySelector(".view-popup .close-icon");
 
@@ -20,7 +22,12 @@ const HandleDestroyObject=()=>{
     document.querySelector(".audio-area > .icon-wrapper").innerHTML=`  <i class="fas fa-headphones-alt"></i>`
         
     document.querySelector(".audio-area > .icon-wrapper").classList.remove("rotate")
-    
+
+    clearInterval(PlayInterval)
+
+    isPlayed=false
+
+
 }
 
 
@@ -56,13 +63,11 @@ const PauseAudio=()=>{
         
         let AudioButton=e.target;
 
-        console.log(AudioButton)
+        
         if(isPlay==true){
             PlayAudio()
 
-          
-                HandleCurrentState()
-         
+          PlayInterval=  setInterval(HandleCurrentState,1000)
         }else{
           
             PauseAudio()
@@ -76,19 +81,29 @@ const PauseAudio=()=>{
 
 
 const HandleCurrentState=()=>{
-    setInterval(() => {
-    console.log(Track.played.length)
+console.log("wir")
+  
     if(Track.played.length==0){
         document.querySelector(".audio-area > .icon-wrapper").innerHTML=`<i class="fas fa-spinner"></i>   `
         
         document.querySelector(".audio-area > .icon-wrapper").classList.add("rotate")
+
+        isPlayed=true
+
     }else{
         document.querySelector(".audio-area > .icon-wrapper").innerHTML=`  <i class="fas fa-headphones-alt"></i>`
         
         document.querySelector(".audio-area > .icon-wrapper").classList.remove("rotate")
     }
+
+    if(isPlayed=true){
+        clearInterval(PlayInterval)
+    }
    
-},1000)}
+
+
+
+}
 
     AudioButton.addEventListener("click",HandlePlayButton)
     ClosePopupIcon.addEventListener("click",HandleDestroyObject)
