@@ -17,6 +17,10 @@ const HandleDestroyObject=()=>{
     
     PauseAudio()
     Track.currentTime=0
+    document.querySelector(".audio-area > .icon-wrapper").innerHTML=`  <i class="fas fa-headphones-alt"></i>`
+        
+    document.querySelector(".audio-area > .icon-wrapper").classList.remove("rotate")
+    
 }
 
 
@@ -81,7 +85,7 @@ const HandleCurrentState=()=>{
     }else{
         document.querySelector(".audio-area > .icon-wrapper").innerHTML=`  <i class="fas fa-headphones-alt"></i>`
         
-        // document.querySelector(".audio-area > .icon-wrapper").classList.remove("rotate")
+        document.querySelector(".audio-area > .icon-wrapper").classList.remove("rotate")
     }
    
 },1000)}
