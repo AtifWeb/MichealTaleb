@@ -10,11 +10,17 @@
     <audio src="./assets/demi.mp3" controls  preload="true"></audio>
     <p class="play">Play</p>
     <p class="pause">Pause</p>
+    <div class="net"></div>
 
 
     <script>
         let Audio=document.querySelector("audio"),play=document.querySelector(".play"),pause=document.querySelector(".pause")
 
+
+setInterval(()=>{
+    console.log(Audio.networkState)
+    document.querySelector(".net").textContent=Audio.networkState
+},1000)
 
 
         play.addEventListener("click",()=>{
@@ -24,10 +30,10 @@
             Audio.pause()
         })
         Audio.addEventListener("play",()=>{
-            window.alert("play")
+            // window.alert("play")
         })
         Audio.addEventListener("loadeddata",()=>{
-            window.alert("loadeddata")
+            // window.alert("loadeddata")
         })
     </script>
 </body>
