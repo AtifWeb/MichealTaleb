@@ -1,7 +1,7 @@
 export const AudioPlayer=(FileLink,Track)=>{
     
     let AudioButton=document.querySelector(".PlayButton");
-    let AudioRange=document.querySelector(".audio-range");
+    let AudioRange=document.querySelector(".custom-range");
     let isPlay=true
     let isPlayed=false;
   
@@ -34,7 +34,7 @@ const HandleDestroyObject=()=>{
     setInterval(() => {
   
         let CurrentTimePercentage=GetCurrentTrackTimePercentage(Track.currentTime,Track.duration)
-        AudioRange.value=CurrentTimePercentage
+        AudioRange.style.width=`${CurrentTimePercentage}%`
     }, 1000);
 
 
