@@ -193,3 +193,131 @@
   font-weight: 500;
   margin-top: 1rem;
 }
+.view-popup {
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 222222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+.view-popup img {
+  max-width: 50vw;
+  max-height: 90vh;
+  object-fit: cover;
+}
+
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+.video-area {
+  display: none;
+}
+
+.close-icon .fa-times path {
+  fill: #fff;
+}
+.plan-box-card .image-wrapper > * {
+  pointer-events: none;
+}
+.video-area .vjs-big-play-button {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #7a69d4;
+  border: none;
+}
+@media screen and (max-width: 700px) {
+  .video-area {
+    padding: 0rem 2rem;
+    width: 90%;
+  }
+  .video-area #my-video {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .video-area #my-video {
+    width: 100%;
+    height: 250px;
+  }
+  .view-popup img {
+    max-width: 70vw;
+    max-height: 90vh;
+  }
+}
+
+.audio-range {
+  background-color: #7a69d4;
+  width: 100%;
+  margin: 0 !important;
+}
+.audio-area {
+  width: 400px;
+  background-color: #7a69d4;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+.playing-area {
+  width: 100%;
+}
+.audio-area > .icon-wrapper {
+  background-color: #fff;
+  color: #7a69d4;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  /* display: none; */
+  justify-content: center;
+}
+.audio-area > .icon-wrapper.rotate {
+  animation: 1.5s Rotate infinite linear;
+}
+.audio-area > .icon-wrapper svg {
+  width: 80px !important;
+  height: 80px !important;
+}
+.audio-area .buttons-wrapper {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.audio-area .buttons-wrapper .icon-wrapper {
+  color: #7a69d4;
+  background-color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+@media screen and (max-width: 430px) {
+  .audio-area {
+    width: 80%;
+  }
+}
+
+@keyframes Rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -20,10 +20,11 @@ FileIconWrappers.forEach(FileIconWrapper=>{
 FileIconWrapper.addEventListener("click",(e)=>{
     e.preventDefault()
 
-    let DownloadButton=e.target.parentNode.querySelector(".Download-button")   
+    let DownloadButton=e.target
     let FileLink=""
     if(DownloadButton!=null){
         FileLink=DownloadButton.getAttribute("href")
+        console.log(FileLink)
         let FileExtension=getFileExtension(FileLink)
 
 
@@ -38,8 +39,8 @@ FileIconWrapper.addEventListener("click",(e)=>{
             ViewPopUp.querySelector(".content-area").innerHTML=""
             ViewPopUp.querySelector(".video-area").style.display="block"
             ViewPopUp.querySelector(".audio-area").style.display="none"
-          document.querySelector("#my-video_html5_api").setAttribute("src",FileLink)
-          document.querySelector("#my-video_html5_api #Atif").setAttribute("src",FileLink)
+          document.querySelector("#my-video").setAttribute("src",FileLink)
+      
         }else if(FileExtension=="mp3"){
             ViewPopUp.querySelector(".content-area").innerHTML=""
             ViewPopUp.querySelector(".video-area").style.display="none"
