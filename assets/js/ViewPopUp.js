@@ -14,6 +14,9 @@ let FileIconWrappers=document.querySelectorAll(".plan-box-card .view-button")
 let ViewPopUp=document.querySelector(".view-popup")
 ClosePopupIcon.addEventListener('click',(e)=>{
     document.querySelector(".view-popup").style.display="none"
+
+    let VideoFile=document.querySelector("#my-video");
+    VideoFile.pause()
 })
 
 FileIconWrappers.forEach(FileIconWrapper=>{

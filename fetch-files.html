@@ -20,35 +20,8 @@
     
     <link rel="stylesheet" href="./assets/css/fetch-files.css">
 
-    <style>
-         .range-div{
-            width: 100%;
-            height: 10px;
-            background-color: #ddd;
-            border-radius: 99px;
-            margin: 2rem 0rem !important;
-        }
-        .custom-range{
-            height: 100%;
-           
-            background-color: #0077ff;
-            /* border-radius: 99px; */
-          border-top-left-radius: 99px;
-          border-bottom-left-radius: 99px;
-            width: 0%;
-            position: relative;
-        }
-        .custom-range span{
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            left: 80%;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #7fb1eb;
-            border-radius: 50%;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/RangeStyle.css">
+
   </head>
   <body>
 
@@ -247,6 +220,8 @@
                 28 Mins
                </span>
         </div>
+
+        
         </div>
        <div class="result-box-buttons">
         <a href="" class="result-box-button Download-button" onclick="doMagic(event,5)">
@@ -267,6 +242,48 @@
     </a >
        </div>
     </div>
+    <div class="plan-box-card">
+      <div class="card-top">
+          <div class="image-wrapper">
+              <img src="./nimg/result-found.PNG" alt="" style="pointer-events: none;">
+          </div>
+      <div class="plan-box-info">
+          <div class="plan-info-left">
+              <h3>Vidoe.mp4
+
+              </h3>
+              <span>504 KIB</span>
+             </div>
+             <span class="plan-info-right">
+              28 Mins
+             </span>
+      </div>
+
+      
+      </div>
+     <div class="result-box-buttons">
+      <a href="" class="result-box-button Download-button" onclick="doMagic(event,5)">
+          Download
+      </a >
+        <small class="download-message">
+          <img src="./nimg/download.png" alt="">
+        </small>
+      <a href="#" class="result-box-button Remove-button" >
+          Remove
+      </a >
+     <form class="share-button-wrapper">
+      <input type="radio" id="share-radio" style="display: none;">
+      
+      <label for="share-radio" class=" Share-button result-box-button">Share</label>
+     </form>  <a href="./assets/video.mp4" class="result-box-button view-button" >
+      View
+  </a >
+     </div>
+  </div>
+
+
+
+    
     <div class="plan-box-card">
       <div class="card-top">
           <div class="image-wrapper">

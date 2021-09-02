@@ -220,7 +220,9 @@
 .video-area {
   display: none;
 }
-
+.video-area video {
+  width: 400px;
+}
 .close-icon .fa-times path {
   fill: #fff;
 }
@@ -251,6 +253,10 @@
   .view-popup img {
     max-width: 70vw;
     max-height: 90vh;
+  }
+
+  .video-area video {
+    width: 90%;
   }
 }
 
@@ -307,6 +313,7 @@
   justify-content: center;
   cursor: pointer;
 }
+
 @media screen and (max-width: 430px) {
   .audio-area {
     width: 80%;
