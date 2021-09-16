@@ -34,8 +34,8 @@ export const AudioPlayer = (FileLink, Track) => {
       Track.currentTime,
       Track.duration
     );
-    d = d + 5;
-    AudioRange.value = `${d}`;
+    // d = d + 5;
+    AudioRange.value = `${CurrentTimePercentage}`;
   }, 1000);
 
   AudioRange.addEventListener("mouseup", (e) => {
