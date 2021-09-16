@@ -43,6 +43,11 @@ export const AudioPlayer = (FileLink, Track) => {
     Track.currentTime = (CurrentRangePercentage * Track.duration) / 100;
     console.log(CurrentRangePercentage);
   });
+  AudioRange.addEventListener("touchend", (e) => {
+    let CurrentRangePercentage = e.target.value;
+    Track.currentTime = (CurrentRangePercentage * Track.duration) / 100;
+    console.log(CurrentRangePercentage);
+  });
 
   const PlayAudio = () => {
     AudioButton.innerHTML = '<i class="fas fa-pause"></i>';
