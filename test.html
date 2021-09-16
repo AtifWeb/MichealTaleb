@@ -34,9 +34,14 @@
   </head>
   <body>
     <div class="range-wrap">
-      <input type="range" class="range" />
+      <input type="range" class="range-sss" />
       <output class="bubble"></output>
     </div>
+    <script>
+      document.querySelector(".range-sss").addEventListener("mousedown", () => {
+        window.alert();
+      });
+    </script>
 
     <video src="https://4fimo.netlify.app/assets/demi.pm4" controls></video>
 
