@@ -1,6 +1,37 @@
 export const AudioPlayer = (FileLink, Track) => {
   let AudioButton = document.querySelector(".PlayButton");
   let AudioRange = document.querySelector(".range-div > input");
+  let VolumeIcon = document.querySelector(".volume-icon-wrapper");
+  let VolumeRange = document.querySelector("#volume-range");
+
+  console.log(document.querySelector(".sound"));
+  VolumeRange.addEventListener("mouseup", (e) => {
+    let Value = e.target.value;
+
+    console.log(Value);
+    Track.volume = Value / 100;
+    if (Value == 0) {
+      document.querySelector(".sound").style.display = "none";
+      document.querySelector(".mute").style.display = "block";
+    } else {
+      document.querySelector(".mute").style.display = "none";
+      document.querySelector(".sound").style.display = "block";
+    }
+  });
+  VolumeRange.addEventListener("touchend", (e) => {
+    let Value = e.target.value;
+
+    Track.volume = Value / 100;
+
+    if (Value == 0) {
+      document.querySelector(".sound").style.display = "none";
+      document.querySelector(".mute").style.display = "block";
+    } else {
+      document.querySelector(".mute").style.display = "none";
+      document.querySelector(".sound").style.display = "block";
+    }
+  });
+
   let isPlay = true;
   let isPlayed = false;
 
@@ -16,6 +47,7 @@ export const AudioPlayer = (FileLink, Track) => {
   const HandleDestroyObject = () => {
     PauseAudio();
     Track.currentTime = 0;
+
     document.querySelector(
       ".audio-area > .icon-wrapper"
     ).innerHTML = `  <i class="fas fa-headphones-alt"></i>`;
@@ -99,7 +131,19 @@ export const AudioPlayer = (FileLink, Track) => {
       clearInterval(PlayInterval);
     }
   };
-
+  document
+    .querySelector(".volume-icon-wrapper")
+    .addEventListener("click", (e) => {
+      let RangeInput = e.target.nextElementSibling;
+      console.log("working");
+      if (
+        document.querySelector("#volume-range").classList.contains("active")
+      ) {
+        document.querySelector("#volume-range").classList.remove("active");
+      } else {
+        document.querySelector("#volume-range").classList.add("active");
+      }
+    });
   AudioButton.addEventListener("click", HandlePlayButton);
   ClosePopupIcon.addEventListener("click", HandleDestroyObject);
 };
