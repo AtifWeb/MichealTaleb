@@ -36,8 +36,14 @@
     <div class="range-wrap">
       <input type="range" class="range-sss" value="20" />
       <output class="bubble"></output>
+      Atif
     </div>
     <script>
+      let d = 0;
+      setInterval(() => {
+        d = d + 5;
+        document.querySelector(".range-sss").value = `${d}`;
+      }, 1000);
       document.querySelector(".range-sss").addEventListener("mouseup", () => {
         document.querySelector(".range-sss").value = "50";
       });
@@ -73,12 +79,12 @@
         play = document.querySelector(".play"),
         pause = document.querySelector(".pause");
 
-      setInterval(() => {
-        console.log(Audio.networkState);
-        console.log(Audio.played.length);
-        // document.querySelector(".net").textContent=Audio.networkState
-        document.querySelector(".net").textContent = Audio.played.length;
-      }, 1000);
+      //   setInterval(() => {
+      //     console.log(Audio.networkState);
+      //     console.log(Audio.played.length);
+      //     // document.querySelector(".net").textContent=Audio.networkState
+      //     document.querySelector(".net").textContent = Audio.played.length;
+      //   }, 1000);
 
       play.addEventListener("click", () => {
         Audio.play();
