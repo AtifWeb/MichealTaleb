@@ -91,8 +91,10 @@ export const AudioPlayer = (FileLink, Track) => {
     AudioRange.value = `${CurrentTimePercentage}`;
 
     let EndingTime = AudioTimeFormatting(Track.duration);
-
-    EndTime.textContent = EndingTime;
+    console.log(typeof EndingTime);
+    if (EndTime != "NaN:NaN") {
+      EndTime.textContent = EndingTime;
+    }
   }, 1000);
 
   AudioRange.addEventListener("mouseup", (e) => {
