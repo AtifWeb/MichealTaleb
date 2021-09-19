@@ -167,6 +167,19 @@ export const AudioPlayer = (FileLink, Track) => {
         Track.volume = 1;
       }
     });
+
+  document
+    .querySelector(".volume-icon-wrapper")
+    .addEventListener("touch", (e) => {
+      e.target.classList.toggle("active");
+
+      if (e.target.classList.contains("active")) {
+        Track.volume = 0;
+      } else {
+        Track.volume = 1;
+      }
+    });
+
   AudioButton.addEventListener("click", HandlePlayButton);
   ClosePopupIcon.addEventListener("click", HandleDestroyObject);
 };
