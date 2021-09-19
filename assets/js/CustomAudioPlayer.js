@@ -89,6 +89,10 @@ export const AudioPlayer = (FileLink, Track) => {
     StartTime.textContent = AudioWorkingTime;
 
     AudioRange.value = `${CurrentTimePercentage}`;
+
+    let EndingTime = AudioTimeFormatting(Track.duration);
+
+    EndTime.textContent = EndingTime;
   }, 1000);
 
   AudioRange.addEventListener("mouseup", (e) => {
@@ -114,10 +118,6 @@ export const AudioPlayer = (FileLink, Track) => {
   };
 
   const HandlePlayButton = (e) => {
-    let EndingTime = AudioTimeFormatting(Track.duration);
-
-    EndTime.textContent = EndingTime;
-
     if (isPlay == true) {
       PlayAudio();
 
