@@ -3,8 +3,9 @@ export const AudioPlayer = (FileLink, Track) => {
   let AudioRange = document.querySelector(".range-div > input");
   let VolumeIcon = document.querySelector(".volume-icon-wrapper");
   let VolumeRange = document.querySelector("#volume-range");
+  let StartTime = document.querySelector("#start-time");
+  let EndTime = document.querySelector("#end-time");
 
-  console.log(document.querySelector(".sound"));
   VolumeRange.addEventListener("mouseup", (e) => {
     let Value = e.target.value;
 
@@ -59,14 +60,34 @@ export const AudioPlayer = (FileLink, Track) => {
     clearInterval(PlayInterval);
 
     isPlayed = false;
+    EndTime.textContent = "00:00";
   };
   let d = 0;
+  function AudioTimeFormatting(secs) {
+    var hr = Math.floor(secs / 3600);
+    var min = Math.floor((secs - hr * 3600) / 60);
+    var sec = Math.floor(secs - hr * 3600 - min * 60);
+
+    if (min < 10) {
+      min = "0" + min;
+    }
+    if (sec < 10) {
+      sec = "0" + sec;
+    }
+
+    return min + ":" + sec;
+  }
   setInterval(() => {
     let CurrentTimePercentage = GetCurrentTrackTimePercentage(
       Track.currentTime,
       Track.duration
     );
-    // d = d + 5;
+
+    var currTime = Math.floor(Track.currentTime).toString();
+    let AudioWorkingTime = AudioTimeFormatting(currTime);
+    console.log(AudioWorkingTime);
+    StartTime.textContent = AudioWorkingTime;
+
     AudioRange.value = `${CurrentTimePercentage}`;
   }, 1000);
 
@@ -93,7 +114,9 @@ export const AudioPlayer = (FileLink, Track) => {
   };
 
   const HandlePlayButton = (e) => {
-    let AudioButton = e.target;
+    let EndingTime = AudioTimeFormatting(Track.duration);
+
+    EndTime.textContent = EndingTime;
 
     if (isPlay == true) {
       PlayAudio();
@@ -134,14 +157,12 @@ export const AudioPlayer = (FileLink, Track) => {
   document
     .querySelector(".volume-icon-wrapper")
     .addEventListener("click", (e) => {
-      let RangeInput = e.target.nextElementSibling;
-      console.log("working");
-      if (
-        document.querySelector("#volume-range").classList.contains("active")
-      ) {
-        document.querySelector("#volume-range").classList.remove("active");
+      e.target.classList.toggle("active");
+
+      if (e.target.classList.contains("active")) {
+        Track.volume = 0;
       } else {
-        document.querySelector("#volume-range").classList.add("active");
+        Track.volume = 1;
       }
     });
   AudioButton.addEventListener("click", HandlePlayButton);
