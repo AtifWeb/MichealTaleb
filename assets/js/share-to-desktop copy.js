@@ -368,10 +368,12 @@ const HandleSubmit = () => {
   document.querySelector(".please-wait-container").style.display = "block";
 
   setInterval(() => {
-    document.querySelector(".progress-bar").style.width = `${Width}%`;
-    document.querySelector(
-      ".please-wait-container > span > b"
-    ).textContent = `${Width}%`;
-    Width += 20;
+    if (Width <= 100) {
+      document.querySelector(".progress-bar").style.width = `${Width}%`;
+      document.querySelector(
+        ".please-wait-container > span > b"
+      ).textContent = `${Width}%`;
+      Width += 20;
+    }
   }, 1000);
 };
