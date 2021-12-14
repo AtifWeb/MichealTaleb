@@ -355,25 +355,41 @@ document.querySelector("#submit-button").addEventListener("click", (e) => {
   HandleSubmit();
 });
 
+// HandleSubmit Function
+
 const HandleSubmit = () => {
   let PleaseWaitContainer = document.querySelector(".please-wait-container");
+  let progressbar = document.querySelector(".progress-bar");
+  let ProgressText = document.querySelector(
+    ".please-wait-container > span > b"
+  );
+  let SharetoDesktopInside = document.querySelectorAll(
+    "#share-to-desktop-form > *"
+  );
+  let header = document.querySelector("#header");
+  let stickyhead = document.querySelector(".stickyhead");
   let Width = 0;
-  document
-    .querySelectorAll("#share-to-desktop-form > *")
-    .forEach((EachElement) => {
-      EachElement.style.display = "none";
-    });
-  document.querySelector("#header").style.display = "none";
-  document.querySelector(".stickyhead").style.display = "none";
-  document.querySelector(".please-wait-container").style.display = "block";
+
+  SharetoDesktopInside.forEach((EachElement) => {
+    EachElement.style.display = "none";
+  });
+  header.style.display = "none";
+  stickyhead.style.display = "none";
+  PleaseWaitContainer.style.display = "block";
+
+  // We need first call immediatly not after a second
+  Width = ProgressChanging(progressbar, ProgressText, Width);
 
   setInterval(() => {
     if (Width <= 100) {
-      document.querySelector(".progress-bar").style.width = `${Width}%`;
-      document.querySelector(
-        ".please-wait-container > span > b"
-      ).textContent = `${Width}%`;
-      Width += 20;
+      Width = ProgressChanging(progressbar, ProgressText, Width);
     }
   }, 1000);
+};
+
+const ProgressChanging = (progressbar, ProgressText, Width) => {
+  progressbar.style.width = `${Width}%`;
+  ProgressText.textContent = `${Width}%`;
+  Width += 20;
+  return Width;
 };
