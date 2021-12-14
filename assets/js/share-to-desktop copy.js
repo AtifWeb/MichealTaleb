@@ -352,7 +352,12 @@ document.querySelector(".pop-up-close-icon").addEventListener("click", () => {
 
 document.querySelector("#submit-button").addEventListener("click", (e) => {
   e.preventDefault();
+  HandleSubmit();
+});
 
+const HandleSubmit = () => {
+  let PleaseWaitContainer = document.querySelector(".please-wait-container");
+  let Width = 0;
   document
     .querySelectorAll("#share-to-desktop-form > *")
     .forEach((EachElement) => {
@@ -361,4 +366,12 @@ document.querySelector("#submit-button").addEventListener("click", (e) => {
   document.querySelector("#header").style.display = "none";
   document.querySelector(".stickyhead").style.display = "none";
   document.querySelector(".please-wait-container").style.display = "block";
-});
+
+  setInterval(() => {
+    document.querySelector(".progress-bar").style.width = `${Width}%`;
+    document.querySelector(
+      ".please-wait-container > span > b"
+    ).textContent = `${Width}%`;
+    Width += 20;
+  }, 1000);
+};
