@@ -272,16 +272,34 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
   display: none;
 }
 .playing-area {
   width: 100%;
 }
+.playing-area .range-div {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.playing-area .range-div input {
+  -webkit-appearance: none;
+  outline: none;
+  height: 5px;
+  background-color: #fff;
+}
+.playing-area .range-div input::-webkit-slider-thumb {
+  background-color: #4d4286;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+}
 .audio-area > .icon-wrapper {
   background-color: #fff;
   color: #7a69d4;
-  width: 200px;
+  min-width: 200px;
   height: 200px;
   border-radius: 50%;
   display: flex;
@@ -305,7 +323,7 @@
 .audio-area .buttons-wrapper .icon-wrapper {
   color: #7a69d4;
   background-color: #fff;
-  width: 50px;
+  min-width: 50px;
   height: 50px;
   border-radius: 50%;
   display: flex;
