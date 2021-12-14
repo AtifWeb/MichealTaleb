@@ -352,6 +352,8 @@ document.querySelector(".pop-up-close-icon").addEventListener("click", () => {
 
 document.querySelector("#submit-button").addEventListener("click", (e) => {
   e.preventDefault();
+
+  // NOTE THIS IS MY LOGIC TO SHOW INTERVAL IS WORKING FINE ON DESKTOP AND MOBILE BECAUSE I DONT HAVE BACKEND SO BACKEND DEVELOPER CAN USE HIS/HER LOGIC FOR BACKEND
   HandleSubmit();
 });
 
@@ -380,16 +382,18 @@ const HandleSubmit = () => {
   // We need first call immediatly not after a second
   Width = ProgressChanging(progressbar, ProgressText, Width);
 
-  setInterval(() => {
+  let IntervalOfSubmission = setInterval(() => {
     if (Width <= 100) {
       Width = ProgressChanging(progressbar, ProgressText, Width);
+    } else {
+      clearInterval(IntervalOfSubmission);
     }
-  }, 1000);
+  }, 3000);
 };
 
 const ProgressChanging = (progressbar, ProgressText, Width) => {
   progressbar.style.width = `${Width}%`;
   ProgressText.textContent = `${Width}%`;
-  Width += 20;
+  Width += 25;
   return Width;
 };
