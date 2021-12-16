@@ -29,7 +29,7 @@ let HandleClickAbleImageWrapperWorking = (e) => {
   let DemiArrayForSize = [];
 
   for (const c in FilesLength) {
-    if (c != SpecificNumber - 1) {
+    if (c !== SpecificNumber - 1) {
       DemiArrayForLength.push(FilesLength[c]);
     } else {
       DemiArrayForLength.push({ length: 0 });
@@ -37,7 +37,7 @@ let HandleClickAbleImageWrapperWorking = (e) => {
   }
 
   for (const key in FilesSize) {
-    if (key != SpecificNumber - 1) {
+    if (key !== SpecificNumber - 1) {
       DemiArrayForSize.push(FilesSize[key]);
     } else {
       DemiArrayForSize.push(0);
@@ -63,10 +63,11 @@ let HandleClickAbleImageWrapperWorking = (e) => {
     TotalFilesLength - 1 <= 1 ? "File" : "Files"
   } - ${FileSize} ${FileSizeUnit}</span>  `;
 
-  if (TotalFilesLength == 0) {
+  if (TotalFilesLength === 0) {
     document.querySelector(".files-information").innerHTML = "";
-    document.querySelector(".submit-wrapper").style.display = "none";
-    document.querySelector(".stickyhead").style.display = "block";
+    document.getElementById("submit1").style.display = "none";
+    document.getElementById("header").style.display = "block";
+    document.getElementById("mainfooterid").style.display = "block";
   }
 };
 const TotalFileSize = (Files) => {
@@ -98,7 +99,7 @@ function Calculate_Single_FileObject_Size_InBytes(file, decision) {
   }
 
   // START CHANGE
-  if (decision != "No") {
+  if (decision !== "No") {
     FilesSize.push(TotalSize);
   }
 
@@ -145,14 +146,25 @@ function Work(e) {
     } - ${FileSize} ${FileSizeUnit}</span>  `;
 
     FIleSteps++;
+    /*CreateFileInput(
+         `		<input type='file' id="file-${FIleSteps}" class="file-input" multiple   />`,
+         FIleSteps
+         );*/
+
     CreateFileInput(
-      `		<input type='file' id="file-${FIleSteps}" class="file-input" multiple   />`,
+      `		<input type="file" name="file-${FIleSteps}" id="file-${FIleSteps}" class="file-input" multiple   />`,
       FIleSteps
     );
 
     document.querySelector(".error").innerHTML = "";
-    document.querySelector(".submit-wrapper").style.display = "block";
-    document.querySelector(".stickyhead").style.display = "none";
+    ///document.querySelector(".submit-wrapper").style.display = "block";
+    document.getElementById("submit1").style.display = "block";
+    document.getElementById("header").style.display = "block";
+    ///document.querySelector(".bottomnav").style.display = "none";
+    // document.getElementById("mainfooterid").style.display = "none";
+    //   Loop On all Pictues
+    //
+    //
     //   Loop On all Pictues
 
     let Images = document.querySelector(".images");
@@ -201,10 +213,11 @@ function Work(e) {
   // CHANGE START
   else if (CalculateLength(FilesLength) + File.length > MaxFileLengthInNumber) {
     let ErrorMessage = HTMLERROR(
-      `Use Maximum ${MaxFileLengthInNumber} Files Your Files length are ${
+      `<div id="htitle" class="fetch-files-container"><div class="card require-time-card"><img src="./nimg/fetch-files-require-more-time.PNG" alt=""><p>Maximum Allowed Is <b>${MaxFileLengthInNumber}</b> Files<br>Uploaded Files Are <b>${
         CalculateLength(FilesLength) + File.length
-      }`
+      }</b></p></div></div>`
     );
+
     document.querySelector(".error").innerHTML = ErrorMessage;
   } else if (
     CalculateTotalSizeInBytes(FilesSize) +
@@ -216,8 +229,9 @@ function Work(e) {
         Calculate_Single_FileObject_Size_InBytes(File, "No")
     );
     let ErrorMessage = HTMLERROR(
-      `Use Maximum ${MaxFileSizeInDifferUnit} ${MaxFileSizeInUnit} Your Files Size are ${FileSize} ${FileSizeUnit}`
+      `<div id="htitle" class="fetch-files-container"><div class="card require-time-card"><img src="./nimg/fetch-files-require-more-time.PNG" alt=""><p>Files Too Big<br>Send Size: <b>${FileSize} ${FileSizeUnit}</b><br>Maximum Allowed: <b>${MaxFileSizeInDifferUnit} ${MaxFileSizeInUnit}</b><br><a href=sub.jsp  title="Plans" style=\"color: blue;\">Upgrade Plan</a></p></div></div>`
     );
+
     document.querySelector(".error").innerHTML = ErrorMessage;
   }
 
@@ -240,7 +254,7 @@ const RemoveFileInput = (HTMLFILEINPUTID) => {
 const HTMLBOILTERPLATEWITHOUTLOOP = (stepNumber) => {
   return `
   <div class="step-${stepNumber}"> <div class="step-top">
-      <p>File ${stepNumber}</p>
+      <p>Uploaded Set ${stepNumber}</p>
       <span class="icon-wrapper" id="image-${stepNumber}">
         <i class="fas fa-times"></i>
       </span>
@@ -257,13 +271,15 @@ const HTMLBOILTERPLATE = (FileName, RenderResult, FileType, FileSizeParam) => {
   let CheckFileType = FileType.split("/")[0];
   let { FileSize, FileSizeUnit } = CountFileSize(FileSizeParam);
 
-  if (CheckFileType == "image") {
+  if (CheckFileType === "image") {
     return `
     <div  class= "image image-${FileNameWithoutSpace}${FirstRandomNumber}${SecondRandomNumber} box-with-image"  id="pure-wrapper-${FileNameWithoutSpace}${FirstRandomNumber}${SecondRandomNumber}">
     
            <div class="left-side">
            <div class="left-side-icon-wrapper">
-             <img src="./nimg/pro-plan.PNG" alt="">
+             <i class="fas ${getFileExtension(
+               FileName
+             )} fa-2x" style="color: white;"></i>
            </div>
           <div class="presentation">
             <h2>${FileName}</h2>
@@ -281,7 +297,9 @@ const HTMLBOILTERPLATE = (FileName, RenderResult, FileType, FileSizeParam) => {
   
            <div class="left-side">
            <div class="left-side-icon-wrapper">
-             <img src="./nimg/pro-plan.PNG" alt="">
+             <i class="fas ${getFileExtension(
+               FileName
+             )} fa-2x" style="color: white;"></i>
            </div>
           <div class="presentation">
             <h2>${FileName}</h2>
@@ -315,17 +333,17 @@ function CountFileSize(FileSizeInBytes) {
   if (FileSizeInKb < 1024) {
     return {
       FileSize: Math.round(FileSizeInKb),
-      FileSizeUnit: "kb",
+      FileSizeUnit: "KiB",
     };
   } else if (FileSizeInMb < 1024) {
     return {
       FileSize: Math.round(FileSizeInMb),
-      FileSizeUnit: "Mb",
+      FileSizeUnit: "MiB",
     };
   } else {
     return {
       FileSize: Math.round(FileSizeInGb),
-      FileSizeUnit: "Gb",
+      FileSizeUnit: "GiB",
     };
   }
 }
@@ -350,50 +368,296 @@ document.querySelector(".pop-up-close-icon").addEventListener("click", () => {
   document.querySelector(".img-pop-up-container").style.display = "none";
 });
 
-document.querySelector("#submit-button").addEventListener("click", (e) => {
+const HandleProgressBarUpdates = (try_number) => {
+  try {
+    var text = document.getElementById("progbar").innerHTML;
+    var result = text.substring(0, 4);
+    if (result === "Wait") {
+      return;
+    }
+  } catch (error) {
+    console.log("Error");
+
+    return;
+  }
+
+  try {
+    document.querySelector(".please_wait_text_try span").textContent =
+      try_number;
+    try_number++;
+    return try_number;
+    // $.ajax({
+    //   type: "post",
+    //   url: "UploadProgress",
+    //   data: "",
+    //   cache: false,
+    //   processData: false,
+    //   success: function (msg) {
+    //     var result1 = msg.substring(0, 1);
+    //     if (result1 === "0") {
+    //     } else {
+    //       document.getElementById("progbar").innerHTML = msg;
+    //     }
+    //   },
+    // });
+  } catch (error) {
+    console.log(error);
+    // console.log("Error");
+    ////setTimeout(checkProgress, 3000);
+    // return;
+  }
+
+  /// setTimeout(checkProgress, 3000);
+};
+
+function checkProgress() {
+  try {
+    var text = document.getElementById("progbar").innerHTML;
+    var result = text.substring(0, 4);
+    if (result === "Wait") {
+      return;
+    }
+  } catch (error) {
+    ////setTimeout(checkProgress, 3000);
+    return;
+  }
+
+  try {
+    $.ajax({
+      type: "post",
+      url: "UploadProgress",
+      data: "",
+      cache: false,
+      processData: false,
+      success: function (msg) {
+        var result1 = msg.substring(0, 1);
+        if (result1 === "0") {
+        } else {
+          document.getElementById("progbar").innerHTML = msg;
+        }
+      },
+    });
+  } catch (error) {
+    ////setTimeout(checkProgress, 3000);
+    return;
+  }
+
+  /// setTimeout(checkProgress, 3000);
+}
+/*
+ $(document).on('submit','share-to-desktop-form',function(){
+ // code
+ e.preventDefault();
+ setTimeout(checkProgress, 3000);
+ 
+ document.getElementById('share-to-desktop-form').submit();
+ document
+ .querySelectorAll("#share-to-desktop-form > *")
+ .forEach((EachElement) => {
+ EachElement.style.display = "none";
+ });
+ 
+ document.querySelector(".please-wait-container").style.display = "block";
+ document.getElementById("submit1").style.display = "none";
+ document.getElementById("header").style.display = "none";
+ document.getElementById("htitle").style.display = "none";
+ 
+ document.getElementById('share-to-desktop-form').submit();
+ 
+ });*/
+
+/*const form = document.querySelector('#share-to-desktop-form');
+ form.addEventListener('submit', event => {
+ event.preventDefault();
+ document.getElementById("share-to-desktop-form").submit();
+ 
+ document
+ .querySelectorAll("#share-to-desktop-form > *")
+ .forEach((EachElement) => {
+ EachElement.style.display = "none";
+ }); 
+ document.querySelector(".please-wait-container").style.display = "block";
+ document.getElementById("submit1").style.display = "none";
+ document.getElementById("header").style.display = "none";
+ document.getElementById("htitle").style.display = "none";
+ checkProgress();
+ 
+ 
+ 
+ 
+ });*/
+
+document.getElementById("submit1").addEventListener("click", (e) => {
   e.preventDefault();
-
-  // NOTE THIS IS MY LOGIC TO SHOW INTERVAL IS WORKING FINE ON DESKTOP AND MOBILE BECAUSE I DONT HAVE BACKEND SO BACKEND DEVELOPER CAN USE HIS/HER LOGIC FOR BACKEND
-  HandleSubmit();
-});
-
-// HandleSubmit Function
-
-const HandleSubmit = () => {
-  let PleaseWaitContainer = document.querySelector(".please-wait-container");
-  let progressbar = document.querySelector(".progress-bar");
-  let ProgressText = document.querySelector(
-    ".please-wait-container > span > b"
-  );
-  let SharetoDesktopInside = document.querySelectorAll(
-    "#share-to-desktop-form > *"
-  );
-  let header = document.querySelector("#header");
-  let stickyhead = document.querySelector(".stickyhead");
-  let Width = 0;
-
-  SharetoDesktopInside.forEach((EachElement) => {
-    EachElement.style.display = "none";
-  });
-  header.style.display = "none";
-  stickyhead.style.display = "none";
-  PleaseWaitContainer.style.display = "block";
-
-  // We need first call immediatly not after a second
-  Width = ProgressChanging(progressbar, ProgressText, Width);
+  let try_number = 0;
+  try_number = HandleProgressBarUpdates(try_number);
+  //// setInterval(HandleProgressBarUpdates, 3000);
 
   let IntervalOfSubmission = setInterval(() => {
-    if (Width <= 100) {
-      Width = ProgressChanging(progressbar, ProgressText, Width);
-    } else {
-      clearInterval(IntervalOfSubmission);
-    }
+    try_number = HandleProgressBarUpdates(try_number);
   }, 3000);
-};
 
-const ProgressChanging = (progressbar, ProgressText, Width) => {
-  progressbar.style.width = `${Width}%`;
-  ProgressText.textContent = `${Width}%`;
-  Width += 25;
-  return Width;
-};
+  document
+    .querySelectorAll("#share-to-desktop-form > *")
+    .forEach((EachElement) => {
+      EachElement.style.display = "none";
+    });
+  document.querySelector(".please-wait-container").style.display = "block";
+  document.getElementById("submit1").style.display = "none";
+  document.getElementById("header").style.display = "none";
+  // document.getElementById("htitle").style.display = "none";
+
+  ///e.preventDefault();
+  //checkProgress();
+  ///alert("Called.....");
+});
+
+///document.querySelector('#share-to-desktop-form').addEventListener("submit", checkProgress);
+
+// CHANGE START
+function getFileExtension(filename) {
+  var ext = filename.split(".").pop();
+  ext = ext.toLowerCase();
+  if (ext === "pdf") {
+    return "fas fa-file-pdf";
+  }
+
+  if (ext === "doc") {
+    return "fas fa-file-word";
+  }
+  if (ext === "docx") {
+    return "fas fa-file-word";
+  }
+  if (ext === "ppt") {
+    return "fas fa-file-powerpoint";
+  }
+  if (ext === "pptx") {
+    return "fas fa-file-powerpoint";
+  }
+  if (ext === "xls") {
+    return "fas fa-file-excel";
+  }
+  if (ext === "xlsx") {
+    return "fas fa-file-excel";
+  }
+  if (ext === "csv") {
+    return "fas fa-file-csv";
+  }
+  if (ext === "mp4") {
+    return "fas fa-file-video";
+  }
+  if (ext === "mov") {
+    return "fas fa-file-video";
+  }
+  if (ext === "m4v") {
+    return "fas fa-file-video";
+  }
+  if (ext === "mkv") {
+    return "fas fa-file-video";
+  }
+  if (ext === "webm") {
+    return "fas fa-file-video";
+  }
+  if (ext === "mpeg") {
+    return "fas fa-file-video";
+  }
+  if (ext === "avi") {
+    return "fas fa-file-video";
+  }
+  if (ext === "flv") {
+    return "fas fa-file-video";
+  }
+  if (ext === "f4v") {
+    return "fas fa-file-video";
+  }
+  if (ext === "wmv") {
+    return "fas fa-file-video";
+  }
+  if (ext === "rm") {
+    return "fas fa-file-video";
+  }
+  if (ext === "asf") {
+    return "fas fa-file-video";
+  }
+  if (ext === "mts") {
+    return "fas fa-file-video";
+  }
+  if (ext === "ogv") {
+    return "fas fa-file-video";
+  }
+
+  if (ext === "zip") {
+    return "fas fa-file-archive";
+  }
+  if (ext === "rar") {
+    return "fas fa-file-archive";
+  }
+  if (ext === "png") {
+    return "fas fa-file-image";
+  }
+  if (ext === "jpg") {
+    return "fas fa-file-image";
+  }
+  if (ext === "jpeg") {
+    return "fas fa-file-image";
+  }
+  if (ext === "gif") {
+    return "fas fa-file-image";
+  }
+  if (ext === "ico") {
+    return "fas fa-file-image";
+  }
+  if (ext === "bmp") {
+    return "fas fa-file-image";
+  }
+  if (ext === "webp") {
+    return "fas fa-file-image";
+  }
+
+  if (ext === "mp3") {
+    return "fas fa-music";
+  }
+  if (ext === "wav") {
+    return "fas fa-file-audio";
+  }
+  if (ext === "wma") {
+    return "fas fa-file-audio";
+  }
+  if (ext === "ogg") {
+    return "fas fa-file-audio";
+  }
+  if (ext === "ra") {
+    return "fas fa-file-audio";
+  }
+  if (ext === "m4a") {
+    return "fas fa-file-audio";
+  }
+
+  if (ext === "oga") {
+    return "fas fa-file-audio";
+  }
+  if (ext === "flac") {
+    return "fas fa-file-audio";
+  }
+  if (ext === "aiff") {
+    return "fas fa-file-audio";
+  }
+  if (ext === "au") {
+    return "fas fa-file-audio";
+  }
+  if (ext === "aac") {
+    return "fas fa-file-audio";
+  }
+  if (ext === "aif") {
+    return "fas fa-file-audio";
+  }
+
+  if (ext === "svg") {
+    return "fas fa-file-image";
+  }
+  if (ext === "tif") {
+    return "fas fa-file-image";
+  }
+
+  return "fas fa-file";
+}
