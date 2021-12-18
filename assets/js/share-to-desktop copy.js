@@ -382,44 +382,37 @@ const HandleProgressBarUpdates = (try_number) => {
   }
 
   try {
-    document.querySelector(".please_wait_text_try span").textContent =
-      try_number;
     try_number++;
 
-    // fetch()
-    //   .then((response) => response.json())
-    //   .then((json) => {
+    // $.ajax({
+    //   type: "get",
+    //   url: `https://jsonplaceholder.typicode.com/todos/${try_number}`,
+
+    //   cache: false,
+    //   processData: false,
+    //   success: function (json) {
     //     let JsonGetData = document.querySelector(".json_get_data");
     //     let HTML = `
     //   <div style="background-color: #ddd;padding: 1rem;margin-bottom: 1rem;">
-    //       <p>Id: ${json["userId"]}</p>
+    //       <p>Id: ${json["id"]}</p>
     //       <p>title: ${json["title"]}</p>
-    //       <p>Completed: ${json["userId"]}</p>
+
     //     </div>
 
     //     `;
 
     //     JsonGetData.insertAdjacentHTML("beforeend", HTML);
-    //   });
+    //   },
+    // });
 
     $.ajax({
       type: "get",
-      url: `https://jsonplaceholder.typicode.com/todos/${try_number}`,
+      url: `https://www.4fimo.com/4fimoweb/DemoProgress`,
 
       cache: false,
       processData: false,
-      success: function (json) {
-        let JsonGetData = document.querySelector(".json_get_data");
-        let HTML = `
-      <div style="background-color: #ddd;padding: 1rem;margin-bottom: 1rem;">
-          <p>Id: ${json["id"]}</p>
-          <p>title: ${json["title"]}</p>
-          
-        </div>
-        
-        `;
-
-        JsonGetData.insertAdjacentHTML("beforeend", HTML);
+      success: function (html) {
+        document.querySelector(".please-wait-container").innerHTML = html;
       },
     });
 
@@ -519,7 +512,7 @@ document.getElementById("submit1").addEventListener("click", (e) => {
 
   let IntervalOfSubmission = setInterval(() => {
     try_number = HandleProgressBarUpdates(try_number);
-  }, 3000);
+  }, 1000);
 
   document
     .querySelectorAll("#share-to-desktop-form > *")
