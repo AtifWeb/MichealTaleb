@@ -11,6 +11,37 @@ let MaxFileSize = document.querySelector(".file-size").value;
 let MaxFileSizeInNumber = parseInt(MaxFileSize);
 let MaxFileLengthInNumber = parseInt(MaxFileLength);
 
+const UpdateFileValues=(ParentId,TotalFilesLength)=>{
+
+  const GetTotalImages=document.querySelectorAll(".images .image").length
+  const GetUpdateSize=GetTotalImages-TotalFilesLength;
+  // FilesLength=GetUpdateSize
+  FilesSize[ParentId-1]=0
+
+  FilesLength[ParentId-1]=null
+
+  CalculateLength(FilesLength) 
+
+
+
+  let { FileSize, FileSizeUnit } = CountFileSize(
+    CalculateTotalSizeInBytes(FilesSize)
+  );
+
+
+
+
+  document.querySelector(
+    ".files-information"
+  ).innerHTML = ` <span class="files-length"><span class="total_file_length">${GetUpdateSize}</span> ${
+    TotalFilesLength - 1 <= 1 ? "File" : "Files"
+  } - ${FileSize} ${FileSizeUnit}</span>  `;
+
+
+
+ 
+}
+
 // START CHANGE
 let { MaxFileSizeInDifferUnit, MaxFileSizeInUnit } =
   MaxFileSizeInUnits(MaxFileSizeInNumber);
@@ -23,8 +54,13 @@ let ImageWrappers = document.querySelectorAll(".images > .image >  span");
 
 // This thing handle event to remove things
 let HandleClickAbleImageWrapperWorking = (e) => {
+
   let SpecificNumber = e.target.id.split("-")[1];
 
+  let LocalFilesLength=e.target.parentNode.parentNode.querySelectorAll(".image").length
+  let ParentId=e.target.parentNode.parentNode.classList[0].split('-')[1]
+
+  // let TotalFiles=document.querySelectorAll()
   let DemiArrayForLength = [];
   let DemiArrayForSize = [];
 
@@ -47,21 +83,22 @@ let HandleClickAbleImageWrapperWorking = (e) => {
   FilesLength = DemiArrayForLength;
   FilesSize = DemiArrayForSize;
 
+
+ 
+
   let TotalFilesLength = CalculateLength(FilesLength);
   let { FileSize, FileSizeUnit } = CountFileSize(
     CalculateTotalSizeInBytes(FilesSize)
   );
 
-  document.querySelector(`.step-${SpecificNumber}`).remove();
+
+  // function
+  UpdateFileValues(ParentId,LocalFilesLength)
+  e.target.parentNode.parentNode.remove();
 
   // remove file input because we dont need
-  RemoveFileInput(SpecificNumber - 1);
 
-  document.querySelector(
-    ".files-information"
-  ).innerHTML = ` <span class="files-length">${TotalFilesLength} ${
-    TotalFilesLength - 1 <= 1 ? "File" : "Files"
-  } - ${FileSize} ${FileSizeUnit}</span>  `;
+  RemoveFileInput(ParentId);
 
   if (TotalFilesLength === 0) {
     document.querySelector(".files-information").innerHTML = "";
@@ -86,8 +123,14 @@ const TotalFileSize = (Files) => {
 };
 function CalculateLength(fileArray) {
   let length = 0;
+
+  
   fileArray.forEach((EachObject) => {
-    length = length + EachObject.length;
+    if(EachObject!=null)
+    {
+      length = length + EachObject.length;
+
+    }
   });
 
   return length;
@@ -120,6 +163,7 @@ function Work(e) {
   // Grab All Picturs
 
   File = e.target.files;
+
   AllFiles = [...File, ...AllFiles];
 
   // CHANGE CONDITION MAKE SURE USE THIS CONDITION INSDE IF AND ELSE FI
@@ -139,9 +183,13 @@ function Work(e) {
       CalculateTotalSizeInBytes(FilesSize)
     );
 
+
+
+ 
+
     document.querySelector(
       ".files-information"
-    ).innerHTML = ` <span class="files-length">${TotalFilesLength} ${
+    ).innerHTML = ` <span class="files-length"><span class="total_file_length">${TotalFilesLength}</span> ${
       TotalFilesLength - 1 <= 1 ? "File" : "Files"
     } - ${FileSize} ${FileSizeUnit}</span>  `;
 
@@ -157,22 +205,19 @@ function Work(e) {
     );
 
     document.querySelector(".error").innerHTML = "";
-    ///document.querySelector(".submit-wrapper").style.display = "block";
+
     document.getElementById("submit1").style.display = "block";
     document.getElementById("header").style.display = "block";
-    ///document.querySelector(".bottomnav").style.display = "none";
-    // document.getElementById("mainfooterid").style.display = "none";
-    //   Loop On all Pictues
-    //
-    //
-    //   Loop On all Pictues
-
+    
     let Images = document.querySelector(".images");
 
     let HTML = HTMLBOILTERPLATEWITHOUTLOOP(FIleSteps);
 
     Images.insertAdjacentHTML("beforeend", HTML);
     let CurrentStep = document.querySelector(`.step-${FIleSteps}`);
+
+
+
 
     document.querySelectorAll(".step-top .icon-wrapper").forEach((One) => {
       One.removeEventListener("click", HandleClickAbleImageWrapperWorking);
@@ -199,10 +244,11 @@ function Work(e) {
         });
       });
     }
-
-    document.querySelectorAll(".step-top .icon-wrapper").forEach((One) => {
+       document.querySelectorAll(".step-top .icon-wrapper").forEach((One) => {
       One.addEventListener("click", HandleClickAbleImageWrapperWorking);
     });
+    
+ 
 
     document.querySelectorAll(".file-input").forEach((EachFIleInput) => {
       EachFIleInput.addEventListener("change", Work);
@@ -248,7 +294,8 @@ const CreateFileInput = (HTMLFILEINPUT, HTMLFILEINPUTID) => {
 };
 
 const RemoveFileInput = (HTMLFILEINPUTID) => {
-  document.querySelector(`#file-${HTMLFILEINPUTID}`).remove();
+
+  document.querySelector(`#file-${HTMLFILEINPUTID}`);
 };
 
 const HTMLBOILTERPLATEWITHOUTLOOP = (stepNumber) => {
@@ -376,34 +423,12 @@ const HandleProgressBarUpdates = (try_number) => {
       return;
     }
   } catch (error) {
-    console.log("Error");
 
     return;
   }
 
   try {
     try_number++;
-
-    // $.ajax({
-    //   type: "get",
-    //   url: `https://jsonplaceholder.typicode.com/todos/${try_number}`,
-
-    //   cache: false,
-    //   processData: false,
-    //   success: function (json) {
-    //     let JsonGetData = document.querySelector(".json_get_data");
-    //     let HTML = `
-    //   <div style="background-color: #ddd;padding: 1rem;margin-bottom: 1rem;">
-    //       <p>Id: ${json["id"]}</p>
-    //       <p>title: ${json["title"]}</p>
-
-    //     </div>
-
-    //     `;
-
-    //     JsonGetData.insertAdjacentHTML("beforeend", HTML);
-    //   },
-    // });
 
     $.ajax({
       type: "get",
@@ -418,10 +443,7 @@ const HandleProgressBarUpdates = (try_number) => {
 
     return try_number;
   } catch (error) {
-    console.log(error);
-    // console.log("Error");
-    ////setTimeout(checkProgress, 3000);
-    // return;
+   return error
   }
 
   /// setTimeout(checkProgress, 3000);
@@ -455,65 +477,15 @@ function checkProgress() {
       },
     });
   } catch (error) {
-    ////setTimeout(checkProgress, 3000);
     return;
   }
 
-  /// setTimeout(checkProgress, 3000);
 }
-/*
- $(document).on('submit','share-to-desktop-form',function(){
- // code
- e.preventDefault();
- setTimeout(checkProgress, 3000);
- 
- document.getElementById('share-to-desktop-form').submit();
- document
- .querySelectorAll("#share-to-desktop-form > *")
- .forEach((EachElement) => {
- EachElement.style.display = "none";
- });
- 
- document.querySelector(".please-wait-container").style.display = "block";
- document.getElementById("submit1").style.display = "none";
- document.getElementById("header").style.display = "none";
- document.getElementById("htitle").style.display = "none";
- 
- document.getElementById('share-to-desktop-form').submit();
- 
- });*/
 
-/*const form = document.querySelector('#share-to-desktop-form');
- form.addEventListener('submit', event => {
- event.preventDefault();
- document.getElementById("share-to-desktop-form").submit();
- 
- document
- .querySelectorAll("#share-to-desktop-form > *")
- .forEach((EachElement) => {
- EachElement.style.display = "none";
- }); 
- document.querySelector(".please-wait-container").style.display = "block";
- document.getElementById("submit1").style.display = "none";
- document.getElementById("header").style.display = "none";
- document.getElementById("htitle").style.display = "none";
- checkProgress();
- 
- 
- 
- 
- });*/
 
 document.getElementById("submit1").addEventListener("click", (e) => {
   e.preventDefault();
-  // let try_number = 0;
-  // try_number = HandleProgressBarUpdates(try_number);
-  //// setInterval(HandleProgressBarUpdates, 3000);
-
-  // let IntervalOfSubmission = setInterval(() => {
-  //   try_number = HandleProgressBarUpdates(try_number);
-  // }, 1000);
-
+ 
   document
     .querySelectorAll("#share-to-desktop-form > *")
     .forEach((EachElement) => {
@@ -522,14 +494,8 @@ document.getElementById("submit1").addEventListener("click", (e) => {
   document.querySelector(".please-wait-container").style.display = "block";
   document.getElementById("submit1").style.display = "none";
   document.getElementById("header").style.display = "none";
-  // document.getElementById("htitle").style.display = "none";
-
-  ///e.preventDefault();
-  //checkProgress();
-  ///alert("Called.....");
+  
 });
-
-///document.querySelector('#share-to-desktop-form').addEventListener("submit", checkProgress);
 
 // CHANGE START
 function getFileExtension(filename) {
