@@ -506,13 +506,13 @@ function checkProgress() {
 
 document.getElementById("submit1").addEventListener("click", (e) => {
   e.preventDefault();
-  let try_number = 0;
-  try_number = HandleProgressBarUpdates(try_number);
+  // let try_number = 0;
+  // try_number = HandleProgressBarUpdates(try_number);
   //// setInterval(HandleProgressBarUpdates, 3000);
 
-  let IntervalOfSubmission = setInterval(() => {
-    try_number = HandleProgressBarUpdates(try_number);
-  }, 1000);
+  // let IntervalOfSubmission = setInterval(() => {
+  //   try_number = HandleProgressBarUpdates(try_number);
+  // }, 1000);
 
   document
     .querySelectorAll("#share-to-desktop-form > *")
