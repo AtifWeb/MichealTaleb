@@ -23,12 +23,15 @@ const UpdateFileValues=(ParentId,TotalFilesLength)=>{
   CalculateLength(FilesLength) 
 
 
-
   let { FileSize, FileSizeUnit } = CountFileSize(
     CalculateTotalSizeInBytes(FilesSize)
   );
 
 
+  if(FileSize<=0){
+    document.querySelector(".submit-wrapper").style.display="none"
+  }
+   
 
 
   document.querySelector(
@@ -184,7 +187,9 @@ function Work(e) {
     );
 
 
-
+if(TotalFilesLength>0){
+  document.querySelector(".submit-wrapper").style.display="block"
+}
  
 
     document.querySelector(
