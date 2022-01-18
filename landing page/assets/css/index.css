@@ -4,6 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+.social_wrapper {
+  display: none;
+}
 .close-icon {
   display: none;
 }
@@ -76,18 +79,7 @@ header .header-content nav {
 header .header-content nav.active {
   left: 0;
 }
-.closing_area {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100vh;
-  background-color: transparent;
-  z-index: -1;
-}
-.closing_area.active {
-  left: 0;
-}
+
 header .header-content nav > * + * {
   margin-left: 0px;
   margin-top: 2rem;
@@ -119,15 +111,7 @@ header .header-content nav a p {
   margin-bottom: 0px;
   margin-left: 10px;
 }
-.buttons_area {
-  display: flex;
-  align-items: center;
-}
-.buttons_area > * + * {
-  margin-left: 10px;
-}
-.buttons_area > *:first-child {
-}
+
 header .header-content nav .button {
   display: flex;
   justify-content: flex-end;
@@ -509,7 +493,28 @@ main .content-area .buttons-wrapper a:last-child {
   font-size: 15px;
 }
 
-/* bew css */
+/* new css */
+header .buttons_area {
+  display: flex;
+  align-items: center;
+}
+header .buttons_area > * + * {
+  margin-left: 10px;
+}
+
+.closing_area {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  z-index: -1;
+}
+.closing_area.active {
+  left: 0;
+}
+
 .activate-area .top_area {
   justify-content: space-between;
 }
@@ -581,6 +586,11 @@ main .content-area .buttons-wrapper a:last-child {
     height: 350px !important;
   }
 }
+@media screen and (max-width: 500px) {
+  .buttons_area > *:last-child {
+    display: none;
+  }
+}
 @media screen and (max-width: 450px) {
   .splide__arrow--prev {
     left: 81%;
@@ -602,6 +612,13 @@ main .content-area .buttons-wrapper a:last-child {
 @media screen and (max-width: 1200px) {
   .common-width {
     width: 90%;
+  }
+  .social_wrapper {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .social_wrapper > h1 {
+    font-size: 20px !important;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -748,6 +765,9 @@ main .content-area .buttons-wrapper a:last-child {
   }
   .Borrow-section img {
     width: 100%;
+  }
+  .social_wrapper > h1 {
+    font-size: 16px !important;
   }
 }
 @media screen and (max-width: 500px) {

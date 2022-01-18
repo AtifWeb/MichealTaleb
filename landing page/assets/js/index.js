@@ -1,6 +1,6 @@
 let FaqHeads = document.querySelectorAll(".question .head");
 let BurgerIcon = document.querySelector(".burger-icon");
-let ClosingArea = document.querySelector(".closing_area");
+
 let CloseIcon = document.querySelector(".close-icon");
 
 let Words = [
@@ -54,6 +54,7 @@ const HandleFaqDropDown = (e) => {
   }
 };
 
+let ClosingArea = document.querySelector(".closing_area");
 ClosingArea.addEventListener("click", (e) => {
   document
     .querySelector("header .header-content nav")
